@@ -18,7 +18,7 @@ public class PasswordKeyPairGenerator {
 	
 	private static KeyPair getKeyPair(String password) throws GeneralSecurityException {
 	    SecureRandom rnd = SecureRandom.getInstance("SHA1PRNG");
-	    rnd.setSeed(password.getBytes(StandardCharsets.UTF_8));
+	    rnd.setSeed(password.getBytes(StandardCharsets.UTF_8)); // could be a insecure approach because password is used directly. DON'T use in production.
 
 	    KeyPairGenerator pairGenerator = KeyPairGenerator.getInstance("RSA");
 	    pairGenerator.initialize(2048, rnd);
